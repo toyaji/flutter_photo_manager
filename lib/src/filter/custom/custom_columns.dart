@@ -63,7 +63,7 @@ class CustomColumns {
     } else if (isOhos) {
       return 'uri';
     }
-    throw UnsupportedError('Unsupported platform with id');
+    return '_id';
   }
 
   /// The media type column.
@@ -85,7 +85,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'mediaType';
     } else {
-      throw UnsupportedError('Unsupported platform with mediaType');
+      return 'media_type';
     }
   }
 
@@ -100,7 +100,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'pixelWidth';
     } else {
-      throw UnsupportedError('Unsupported platform with width');
+      return 'width';
     }
   }
 
@@ -115,7 +115,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'pixelHeight';
     } else {
-      throw UnsupportedError('Unsupported platform with height');
+      return 'height';
     }
   }
 
@@ -130,7 +130,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'duration';
     } else {
-      throw UnsupportedError('Unsupported platform with duration');
+      return 'duration';
     }
   }
 
@@ -163,7 +163,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'creationDate';
     } else {
-      throw UnsupportedError('Unsupported platform with createDate');
+      return 'date_added';
     }
   }
 
@@ -176,7 +176,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'modificationDate';
     } else {
-      throw UnsupportedError('Unsupported platform with modifiedDate');
+      return 'date_modified';
     }
   }
 
@@ -191,7 +191,7 @@ class CustomColumns {
     } else if (isDarwin) {
       return 'favorite';
     } else {
-      throw UnsupportedError('Unsupported platform with isFavorite');
+      return 'is_favorite';
     }
   }
 
@@ -236,7 +236,7 @@ class CustomColumns {
     } else if (PlatformUtils.isOhos) {
       return const OhosColumns().getValues();
     } else {
-      throw UnsupportedError('Unsupported platform with platformValues');
+      return const AndroidMediaColumns().getValues();
     }
   }
 }
@@ -258,11 +258,10 @@ class AndroidMediaColumns extends CustomColumns {
   const AndroidMediaColumns();
 
   String _getKey(String value) {
-    if (isAndroid) {
-      return value;
-    } else {
+    if (isDarwin || isOhos) {
       throw UnsupportedError('Unsupported column $value in platform');
     }
+    return value;
   }
 
   String get instanceId => _getKey('instance_id');
@@ -407,11 +406,10 @@ class DarwinColumns extends CustomColumns {
   const DarwinColumns();
 
   String _getKey(String value) {
-    if (isDarwin) {
-      return value;
-    } else {
+    if (isAndroid || isOhos) {
       throw UnsupportedError('Unsupported column $value in platform');
     }
+    return value;
   }
 
   String get mediaSubtypes => _getKey('mediaSubtypes');
@@ -462,11 +460,10 @@ class OhosColumns extends CustomColumns {
   const OhosColumns();
 
   String _getKey(String value) {
-    if (isOhos) {
-      return value;
-    } else {
+    if (isAndroid || isDarwin) {
       throw UnsupportedError('Unsupported column $value in platform');
     }
+    return value;
   }
 
   String get displayName => _getKey('display_name');
