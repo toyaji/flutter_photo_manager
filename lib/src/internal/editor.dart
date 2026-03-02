@@ -18,9 +18,7 @@ class Editor {
 
   /// Support iOS and macOS.
   DarwinEditor get darwin {
-    if (Platform.isIOS ||
-        Platform.isMacOS ||
-        Platform.environment.containsKey('FLUTTER_TEST')) {
+    if (Platform.isIOS || Platform.isMacOS) {
       return _darwin;
     }
     throw const OSError('Darwin Editor should only be use on iOS or macOS.');
@@ -28,8 +26,7 @@ class Editor {
 
   /// Support Android.
   AndroidEditor get android {
-    if (Platform.isAndroid ||
-        Platform.environment.containsKey('FLUTTER_TEST')) {
+    if (Platform.isAndroid) {
       return _android;
     }
     throw const OSError('Android Editor should only be use on Android.');
@@ -37,8 +34,7 @@ class Editor {
 
   /// Support Openharmony.
   OhosEditor get ohos {
-    if (PlatformUtils.isOhos ||
-        Platform.environment.containsKey('FLUTTER_TEST')) {
+    if (PlatformUtils.isOhos) {
       return _ohos;
     }
     throw const OSError('Ohos Editor should only be use on OpenHarmony.');
