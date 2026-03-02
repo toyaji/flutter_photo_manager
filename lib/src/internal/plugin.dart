@@ -93,12 +93,10 @@ class VerboseLogMethodChannel extends PMMethodChannel {
       return 'null';
     }
     if (args is Map) {
-      final String res = args.keys
-          .map((key) {
-            final value = args[key];
-            return '$key: ${_formatArgs(value)}';
-          })
-          .join(', ');
+      final String res = args.keys.map((key) {
+        final value = args[key];
+        return '$key: ${_formatArgs(value)}';
+      }).join(', ');
       return 'Map{ $res }';
     }
     if (args is Uint8List) {
@@ -121,8 +119,7 @@ class VerboseLogMethodChannel extends PMMethodChannel {
     required int index,
     required String method,
   }) {
-    final log =
-        '''#$index - invoke - $method
+    final log = '''#$index - invoke - $method
   Method: $method
     ''';
 
@@ -136,8 +133,7 @@ class VerboseLogMethodChannel extends PMMethodChannel {
     required result,
     required Stopwatch stopwatch,
   }) {
-    final log =
-        '''#$index - result - $method
+    final log = '''#$index - result - $method
   Time: ${stopwatch.elapsedMilliseconds}ms
   Args: ${_formatArgs(args)}
   Result: ${_formatArgs(args)}
@@ -822,8 +818,7 @@ class PhotoManagerPlugin with BasePlugin, IosPlugin, AndroidPlugin, OhosPlugin {
     if (filter == null || filter.type != BaseFilterType.custom) {
       return;
     }
-    final isSupported =
-        Platform.isAndroid ||
+    final isSupported = Platform.isAndroid ||
         Platform.isIOS ||
         Platform.isMacOS ||
         PlatformUtils.isOhos;
