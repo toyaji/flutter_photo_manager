@@ -70,9 +70,9 @@ abstract class CustomFilter extends PMFilter {
 ///
 /// ```dart
 /// final filter = CustomFilter.sql(
-///  where: '${CustomColumns.platform.width} > 1000',
+///  where: '${CustomColumns.base.width} > 1000',
 ///  orderBy: [
-///      OrderByItem(CustomColumns.platform.width, desc),
+///      OrderByItem(CustomColumns.base.width, desc),
 ///   ],
 /// );
 /// ```

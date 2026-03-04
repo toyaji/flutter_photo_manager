@@ -23,7 +23,7 @@ import '../../utils/column_utils.dart';
 ///
 /// Example:
 /// ```dart
-///  OrderByItem(CustomColumns.platform.width, true);
+///  OrderByItem(CustomColumns.base.width, true);
 /// ```
 ///
 /// {@endtemplate}
@@ -36,7 +36,7 @@ abstract class CustomColumns {
   /// This factory determines the platform once and returns the appropriate
   /// implementation. On unsupported platforms (e.g., Linux CI), it falls back
   /// to Android column names.
-  static final CustomColumns platform = _createForPlatform();
+  static final CustomColumns base = _createForPlatform();
 
   /// The android columns, contains the android specific columns.
   static const AndroidMediaColumns android = AndroidMediaColumns();
@@ -104,7 +104,7 @@ abstract class CustomColumns {
   /// ```dart
   /// final date = DateTime(2015, 6, 15);
   /// final condition = DateColumnWhereCondition(
-  //    column: CustomColumns.platform.createDate,
+  //    column: CustomColumns.base.createDate,
   //    operator: '<=',
   //    value: date,
   //  );
@@ -139,7 +139,7 @@ abstract class CustomColumns {
   }
 
   static List<String> values() {
-    return platform.getValues();
+    return base.getValues();
   }
 
   static List<String> dateColumns() {
@@ -158,7 +158,7 @@ abstract class CustomColumns {
     return [];
   }
 
-  static List<String> platformValues() {
+  static List<String> baseValues() {
     if (Platform.isAndroid) {
       return const AndroidMediaColumns().getValues();
     } else if (Platform.isIOS || Platform.isMacOS) {

@@ -21,7 +21,7 @@ class _AdvancedCustomFilterPageState extends State<AdvancedCustomFilterPage> {
   List<WhereConditionItem> _where = [];
   List<OrderByItem> _orderBy = [
     OrderByItem.named(
-      column: CustomColumns.platform.createDate,
+      column: CustomColumns.base.createDate,
       isAsc: false,
     ),
   ];

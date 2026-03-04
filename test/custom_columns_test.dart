@@ -14,13 +14,13 @@ void main() {
   final bool isAndroid = Platform.isAndroid;
   final bool isOhos = PlatformUtils.isOhos;
 
-  group('CustomColumns.platform', () {
+  group('CustomColumns.base', () {
     test('should not throw on any platform', () {
-      expect(() => CustomColumns.platform, returnsNormally);
+      expect(() => CustomColumns.base, returnsNormally);
     });
 
     test('should return non-empty string for all base getters', () {
-      final base = CustomColumns.platform;
+      final base = CustomColumns.base;
       expect(base.id, isNotEmpty);
       expect(base.mediaType, isNotEmpty);
       expect(base.width, isNotEmpty);
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('should return correct values for the current platform', () {
-      final base = CustomColumns.platform;
+      final base = CustomColumns.base;
 
       if (isDarwin) {
         expect(base.id, 'localIdentifier');
@@ -63,7 +63,7 @@ void main() {
     });
 
     test('getValues() should return 8 base columns', () {
-      final values = CustomColumns.platform.getValues();
+      final values = CustomColumns.base.getValues();
       expect(values, hasLength(8));
       expect(values, everyElement(isNotEmpty));
     });
@@ -82,12 +82,12 @@ void main() {
       expect(() => CustomColumns.dateColumns(), returnsNormally);
     });
 
-    test('platformValues() should not throw', () {
-      expect(() => CustomColumns.platformValues(), returnsNormally);
+    test('baseValues() should not throw', () {
+      expect(() => CustomColumns.baseValues(), returnsNormally);
     });
 
-    test('platformValues() should include all base columns', () {
-      final platformVals = CustomColumns.platformValues();
+    test('baseValues() should include all base columns', () {
+      final platformVals = CustomColumns.baseValues();
       final baseVals = CustomColumns.values();
       for (final col in baseVals) {
         expect(platformVals, contains(col));
@@ -199,8 +199,8 @@ void main() {
     test('SqlCustomFilter with base columns should not throw', () {
       expect(
         () => CustomFilter.sql(
-          where: '${CustomColumns.platform.width} > 1000',
-          orderBy: [OrderByItem.desc(CustomColumns.platform.createDate)],
+          where: '${CustomColumns.base.width} > 1000',
+          orderBy: [OrderByItem.desc(CustomColumns.base.createDate)],
         ),
         returnsNormally,
       );
@@ -211,21 +211,21 @@ void main() {
       final filter = AdvancedCustomFilter()
           .addWhereCondition(
             ColumnWhereCondition(
-              column: CustomColumns.platform.width,
+              column: CustomColumns.base.width,
               operator: '>=',
               value: '200',
               needCheck: false,
             ),
           )
-          .addOrderBy(column: CustomColumns.platform.createDate, isAsc: false);
+          .addOrderBy(column: CustomColumns.base.createDate, isAsc: false);
 
       final where = filter.makeWhere();
       expect(where, isNotEmpty);
-      expect(where, contains(CustomColumns.platform.width));
+      expect(where, contains(CustomColumns.base.width));
 
       final orderBy = filter.makeOrderBy();
       expect(orderBy, hasLength(1));
-      expect(orderBy.first.column, CustomColumns.platform.createDate);
+      expect(orderBy.first.column, CustomColumns.base.createDate);
     });
 
     test('PMFilter.defaultValue() should not throw', () {

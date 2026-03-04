@@ -121,7 +121,7 @@ class ConvertUtils {
       height: data['height'] as int,
       duration: data['duration'] as int? ?? 0,
       orientation: data['orientation'] as int? ?? 0,
-      isFavorite: data[CustomColumns.platform.isFavorite] as bool? ?? false,
+      isFavorite: data[CustomColumns.base.isFavorite] as bool? ?? false,
       title: data['title'] as String? ?? title,
       subtype: data['subtype'] as int? ?? 0,
       createDateSecond: data['createDt'] as int?,

@@ -8,15 +8,15 @@
 ///
 /// Example:
 /// ```dart
-///   OrderByItem(CustomColumns.platform.width, true);
+///   OrderByItem(CustomColumns.base.width, true);
 /// ```
 ///
 /// See also:
 /// - [CustomFilter]
-/// - [CustomColumns.platform]
+/// - [CustomColumns.base]
 /// - [CustomColumns.android]
 /// - [CustomColumns.darwin]
-/// - [CustomColumns.platformValues]
+/// - [CustomColumns.baseValues]
 ///
 /// {@endtemplate}
 class OrderByItem {
