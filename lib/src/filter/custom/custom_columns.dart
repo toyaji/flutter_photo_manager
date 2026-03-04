@@ -23,7 +23,7 @@ import '../../utils/column_utils.dart';
 ///
 /// Example:
 /// ```dart
-///  OrderByItem(CustomColumns.base.width, true);
+///  OrderByItem(CustomColumns.platform.width, true);
 /// ```
 ///
 /// {@endtemplate}
@@ -31,12 +31,12 @@ abstract class CustomColumns {
   /// {@macro custom_columns}
   const CustomColumns();
 
-  /// The base columns for the current platform.
+  /// The platform columns for the current platform.
   ///
   /// This factory determines the platform once and returns the appropriate
   /// implementation. On unsupported platforms (e.g., Linux CI), it falls back
   /// to Android column names.
-  static final CustomColumns base = _createForPlatform();
+  static final CustomColumns platform = _createForPlatform();
 
   /// The android columns, contains the android specific columns.
   static const AndroidMediaColumns android = AndroidMediaColumns();
@@ -104,7 +104,7 @@ abstract class CustomColumns {
   /// ```dart
   /// final date = DateTime(2015, 6, 15);
   /// final condition = DateColumnWhereCondition(
-  //    column: CustomColumns.base.createDate,
+  //    column: CustomColumns.platform.createDate,
   //    operator: '<=',
   //    value: date,
   //  );
@@ -139,7 +139,7 @@ abstract class CustomColumns {
   }
 
   static List<String> values() {
-    return base.getValues();
+    return platform.getValues();
   }
 
   static List<String> dateColumns() {
@@ -172,23 +172,23 @@ abstract class CustomColumns {
 
   static CustomColumns _createForPlatform() {
     if (Platform.isAndroid) {
-      return const _AndroidCustomColumns();
+      return const AndroidCustomColumns();
     }
     if (Platform.isIOS || Platform.isMacOS) {
-      return const _DarwinCustomColumns();
+      return const DarwinCustomColumns();
     }
     if (PlatformUtils.isOhos) {
-      return const _OhosCustomColumns();
+      return const OhosCustomColumns();
     }
     // Fallback for unsupported platforms (e.g., Linux CI).
     // Returns Android column names as defaults.
-    return const _AndroidCustomColumns();
+    return const AndroidCustomColumns();
   }
 }
 
 /// Android platform implementation of [CustomColumns].
-class _AndroidCustomColumns extends CustomColumns {
-  const _AndroidCustomColumns();
+class AndroidCustomColumns extends CustomColumns {
+  const AndroidCustomColumns();
 
   @override
   String get id => '_id';
@@ -216,8 +216,8 @@ class _AndroidCustomColumns extends CustomColumns {
 }
 
 /// Darwin (iOS/macOS) platform implementation of [CustomColumns].
-class _DarwinCustomColumns extends CustomColumns {
-  const _DarwinCustomColumns();
+class DarwinCustomColumns extends CustomColumns {
+  const DarwinCustomColumns();
 
   @override
   String get id => 'localIdentifier';
@@ -245,8 +245,8 @@ class _DarwinCustomColumns extends CustomColumns {
 }
 
 /// OpenHarmony OS platform implementation of [CustomColumns].
-class _OhosCustomColumns extends CustomColumns {
-  const _OhosCustomColumns();
+class OhosCustomColumns extends CustomColumns {
+  const OhosCustomColumns();
 
   @override
   String get id => 'uri';
@@ -286,7 +286,7 @@ class _OhosCustomColumns extends CustomColumns {
 /// A class that contains the names of the columns used in the custom filter.
 ///
 /// About the values mean, please see document of android: https://developer.android.com/reference/android/provider/MediaStore
-class AndroidMediaColumns extends CustomColumns {
+class AndroidMediaColumns extends AndroidCustomColumns {
   const AndroidMediaColumns();
 
   @override
@@ -458,7 +458,7 @@ class AndroidMediaColumns extends CustomColumns {
 /// A class that contains the names of the columns of the iOS/macOS platform.
 ///
 /// About the values mean, please see document of iOS: https://developer.apple.com/documentation/photokit/phasset
-class DarwinColumns extends CustomColumns {
+class DarwinColumns extends DarwinCustomColumns {
   const DarwinColumns();
 
   @override
@@ -536,7 +536,7 @@ class DarwinColumns extends CustomColumns {
 /// A class that contains the names of the columns used in the custom filter.
 ///
 /// About the values mean, please see document of ohos: https://developer.android.com/reference/android/provider/MediaStore
-class OhosColumns extends CustomColumns {
+class OhosColumns extends OhosCustomColumns {
   const OhosColumns();
 
   @override

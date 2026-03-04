@@ -8,12 +8,12 @@
 ///
 /// Example:
 /// ```dart
-///   OrderByItem(CustomColumns.base.width, true);
+///   OrderByItem(CustomColumns.platform.width, true);
 /// ```
 ///
 /// See also:
 /// - [CustomFilter]
-/// - [CustomColumns.base]
+/// - [CustomColumns.platform]
 /// - [CustomColumns.android]
 /// - [CustomColumns.darwin]
 /// - [CustomColumns.platformValues]

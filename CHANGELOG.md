@@ -11,7 +11,9 @@ To know more about breaking changes, see the [Migration Guide][].
 **Improvements**
 
 - Improve output file extension recognition for Darwin platforms.
-- Refactor `CustomColumns` with platform-separated architecture.
+- Refactor `CustomColumns` to use platform-separated architecture.
+- Rename `CustomColumns.base` to `CustomColumns.platform` to avoid keyword collision in Dart 3.0+.
+- Add public platform behavior classes (`AndroidCustomColumns`, `DarwinCustomColumns`, `OhosCustomColumns`) for `CustomColumns`.
 - Avoid `UnsupportedError` when using `CustomFilter` in non-mobile environments (e.g., CI/Unit tests).
 
 ## 3.8.3

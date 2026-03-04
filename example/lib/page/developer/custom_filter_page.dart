@@ -10,7 +10,7 @@ class CustomFilterPage extends StatefulWidget {
 }
 
 class _CustomFilterPageState extends State<CustomFilterPage> {
-  static final columns = CustomColumns.base;
+  static final columns = CustomColumns.platform;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class _CustomFilterPageState extends State<CustomFilterPage> {
     return CustomFilter.sql(
       where: '',
       orderBy: [
-        OrderByItem.desc(CustomColumns.base.width),
+        OrderByItem.desc(CustomColumns.platform.width),
       ],
     );
   }
@@ -113,7 +113,7 @@ class _CustomFilterPageState extends State<CustomFilterPage> {
     return CustomFilter.sql(
       where: '${columns.width} >= 1000',
       orderBy: [
-        OrderByItem.desc(CustomColumns.base.width),
+        OrderByItem.desc(CustomColumns.platform.width),
       ],
     );
   }

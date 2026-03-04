@@ -22,7 +22,7 @@ class _CustomFilterSqlGIFImageState extends State<CustomFilterSqlGIFImage> {
   final TextEditingController _whereController = TextEditingController();
   final List<OrderByItem> _orderBy = [
     OrderByItem.named(
-      column: CustomColumns.base.createDate,
+      column: CustomColumns.platform.createDate,
       isAsc: false,
     ),
   ];

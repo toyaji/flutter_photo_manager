@@ -814,6 +814,12 @@ class PhotoManagerPlugin with BasePlugin, IosPlugin, AndroidPlugin, OhosPlugin {
     );
   }
 
+  /// Validates if the [filter] is supported on the current platform.
+  ///
+  /// For [CustomFilter], it's only supported on Android, iOS, macOS, and Ohos.
+  ///
+  /// In the test environment, we allow all platforms to bypass this check
+  /// to ensure the package can be tested and built in CI environments (like Linux).
   void _throwIfCustomFilterNotSupported(PMFilter? filter) {
     if (filter == null || filter.type != BaseFilterType.custom) {
       return;

@@ -21,7 +21,7 @@ class _CustomFilterSqlPageState extends State<CustomFilterSqlPage> {
   final TextEditingController _whereController = TextEditingController();
   final List<OrderByItem> _orderBy = [
     OrderByItem.named(
-      column: CustomColumns.base.createDate,
+      column: CustomColumns.platform.createDate,
       isAsc: false,
     ),
   ];

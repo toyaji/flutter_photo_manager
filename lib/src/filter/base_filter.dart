@@ -44,7 +44,7 @@ abstract class PMFilter {
       where: '',
       orderBy: [
         OrderByItem.named(
-          column: CustomColumns.base.createDate,
+          column: CustomColumns.platform.createDate,
           isAsc: false,
         ),
       ],
