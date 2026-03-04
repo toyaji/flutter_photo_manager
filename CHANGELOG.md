@@ -10,7 +10,9 @@ To know more about breaking changes, see the [Migration Guide][].
 
 **Improvements**
 
-- Improve output file extension recognition for Darwin platforms
+- Improve output file extension recognition for Darwin platforms.
+- Refactor `CustomColumns` with platform-separated architecture.
+- Avoid `UnsupportedError` when using `CustomFilter` in non-mobile environments (e.g., CI/Unit tests).
 
 ## 3.8.3
 
@@ -237,31 +239,31 @@ To know more about breaking changes, see the [Migration Guide][].
 
 **Improvements**
 
-* Declare `NSPrivacyAccessedAPICategoryFileTimestamp` for iOS privacy policies.
+- Declare `NSPrivacyAccessedAPICategoryFileTimestamp` for iOS privacy policies.
 
 **Fixes**
 
-* Fixes compile exceptions with Xcode versions that are not compatible with iOS 17.0.
-* Modified the way to read the Java version in `build.gradle`.
+- Fixes compile exceptions with Xcode versions that are not compatible with iOS 17.0.
+- Modified the way to read the Java version in `build.gradle`.
 
 ## 3.2.0
 
 **Improvements**
 
-* Restores `containsLivePhotos` to `true` by default and deprecates it.
-* Use the main resource's filename for the title by default on iOS.
-* Support more methods on the OpenHarmony.
+- Restores `containsLivePhotos` to `true` by default and deprecates it.
+- Use the main resource's filename for the title by default on iOS.
+- Support more methods on the OpenHarmony.
 
 **Fixes**
 
-* Fix obtaining the correct resource from various types of resources on iOS.
-* Fix `isLocallyAvailable` for edited assets on iOS.
+- Fix obtaining the correct resource from various types of resources on iOS.
+- Fix `isLocallyAvailable` for edited assets on iOS.
 
 ## 3.1.1
 
 **Improvements**
 
-* Update plugin structure for OpenHarmony.
+- Update plugin structure for OpenHarmony.
 
 ## 3.1.0
 
