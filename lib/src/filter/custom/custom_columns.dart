@@ -158,7 +158,7 @@ abstract class CustomColumns {
     return [];
   }
 
-  static List<String> baseValues() {
+  static List<String> platformValues() {
     if (Platform.isAndroid) {
       return const AndroidMediaColumns().getValues();
     } else if (Platform.isIOS || Platform.isMacOS) {

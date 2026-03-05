@@ -82,12 +82,12 @@ void main() {
       expect(() => CustomColumns.dateColumns(), returnsNormally);
     });
 
-    test('baseValues() should not throw', () {
-      expect(() => CustomColumns.baseValues(), returnsNormally);
+    test('platformValues() should not throw', () {
+      expect(() => CustomColumns.platformValues(), returnsNormally);
     });
 
-    test('baseValues() should include all base columns', () {
-      final platformVals = CustomColumns.baseValues();
+    test('platformValues() should include all base columns', () {
+      final platformVals = CustomColumns.platformValues();
       final baseVals = CustomColumns.values();
       for (final col in baseVals) {
         expect(platformVals, contains(col));

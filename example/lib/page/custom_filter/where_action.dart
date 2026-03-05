@@ -171,7 +171,7 @@ class _CreateWhereDialog extends StatefulWidget {
 
 class _CreateWhereDialogState extends State<_CreateWhereDialog> {
   List<String> keys() {
-    return CustomColumns.baseValues();
+    return CustomColumns.platformValues();
   }
 
   late String column = keys().first;

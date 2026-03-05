@@ -10,13 +10,13 @@ To know more about breaking changes, see the [Migration Guide][].
 
 **Improvements**
 
-- Improve output file extension recognition for Darwin platforms.
-- Refactor `CustomColumns` to use platform-separated architecture.
-- Add public platform behavior classes (`AndroidCustomColumns`, `DarwinCustomColumns`, `OhosCustomColumns`) for `CustomColumns`.
-- Avoid `UnsupportedError` when using `CustomFilter` in non-mobile environments (e.g., CI/Unit tests).
-- Bump `compileSdkVersion` to 36 for Android.
-- Bump EXIF interface and Glide for Android.
-- Code lints update for Android.
+- Improve output file extension recognition for Darwin platforms
+- Refactor `CustomColumns` to use platform-separated architecture
+- Add public platform behavior classes (`AndroidCustomColumns`, `DarwinCustomColumns`, `OhosCustomColumns`) for `CustomColumns`
+- Avoid `UnsupportedError` when using `CustomFilter` in non-mobile environments (e.g., CI/Unit tests)
+- Bump `compileSdkVersion` to 36 for Android
+- Bump EXIF interface and Glide for Android
+- Code lints update for Android
 
 ## 3.8.3
 
